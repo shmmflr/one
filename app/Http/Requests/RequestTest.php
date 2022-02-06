@@ -24,9 +24,20 @@ class RequestTest extends FormRequest
     public function rules()
     {
         return [
-            'l_name' => ['required', 'string', 'max:5'],
-            'f_name' => ['required', 'string', 'max:8'],
-            'age' => ['required', 'numeric', 'max:15'],
+            'l_name' => ['bail', 'required', 'string', 'max:20'],
+            'f_name' => ['required', 'string', 'max:20'],
+            'age' => ['required', 'numeric', 'max:99'],
+            'gender' => ['required', 'in:female,male'],
+            'military' => ['required_if:gender,male']
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+
+            'gender.required' => 'لطفا جنسیت را تعیین کنید',
+            'military.required_if' => 'وقتی جنسیت مذکر را انتخاب می کنید انتخاب حالت نظام وظیفه الزامی است'
         ];
     }
 }

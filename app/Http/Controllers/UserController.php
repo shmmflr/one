@@ -37,7 +37,8 @@ class UserController extends Controller
     public function store(RequestTest $request)
     {
 //       dd($request->except(['l_name','f_name']));
-        MyUser::create($request->all());
+
+        MyUser::create($request->validated());
         return back();
     }
 
@@ -56,6 +57,25 @@ class UserController extends Controller
 
     public function update(Request $request, $id)
     {
+        $rules = [
+            'l_name' => 'required',
+            'f_name' => 'required',
+            'age' => 'required|min:5',
+        ];
+//مثال کلی
+//        $customMessages = [
+//            'required' => 'The :attribute field can not be blank.'
+//        ];
+
+        //ریز شدن
+        $customMessages = [
+            'l_name.required' => 'نام رو پر نکردی اخوی',
+            'f_name.required' => 'اینم رو پر نکردی !!!',
+            'age.required' => 'سنت چنده دادو',
+            'age.min' => 'سنت نباید کمتر از 5 باشه دادو',
+        ];
+
+        $this->validate($request, $rules, $customMessages);
         $user = MyUser::find($id)->update($request->all());
 //        dd($user);
         return redirect()->route('user.index');

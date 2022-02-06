@@ -23,6 +23,30 @@
             @enderror
             <br>
             <br>
+            جنسیت:
+            <select name="gender">
+                <option disabled selected>
+                    انتخاب
+                </option>
+                <option value="female" @if (old('gender') == 'female') selected="selected" @endif>female</option>
+                <option value="male" @if (old('gender') == 'male') selected="selected" @endif>male</option>
+            </select>
+            @error('gender')
+            {{$message}}
+            @enderror
+            <br>
+            وضعیت خدمت:
+            <select name="military">
+                <option disabled selected>
+                    انتخاب
+                </option>
+                <option value="0">yes</option>
+                <option value="1">no</option>
+            </select>
+            @error('military')
+            {{$message}}
+            @enderror
+            <br>
 
             <input type="submit" value="send">
         </form>
