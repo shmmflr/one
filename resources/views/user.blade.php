@@ -1,4 +1,22 @@
 <x-test-component>
+    <x-slot name="style">
+        <style>
+            #parent, #parent2 {
+                /* can be any value */
+                width: 300px;
+                text-align: right;
+                direction: rtl;
+                position: relative;
+            }
+
+            #parent, #parent2 .select2-container--open + .select2-container--open {
+                left: auto;
+                right: 0;
+                width: 100%;
+            }
+        </style>
+    </x-slot>
+
     <h1 style="text-align: center">فرم ثبت نام</h1>
 
     <div class="d-flex justify-content-center">
@@ -24,25 +42,26 @@
             <br>
             <br>
             جنسیت:
-            <select name="gender">
-                <option disabled selected>
-                    انتخاب
-                </option>
-                <option value="female" @if (old('gender') == 'female') selected="selected" @endif>female</option>
-                <option value="male" @if (old('gender') == 'male') selected="selected" @endif>male</option>
-            </select>
+            <div id="parent2">
+                <select id="gender" name="gender">
+                    <option value="-1">
+                    </option>
+                    <option value="female" @if (old('gender') == 'female') selected="selected" @endif>female</option>
+                    <option value="male" @if (old('gender') == 'male') selected="selected" @endif>male</option>
+                </select>
+            </div>
             @error('gender')
             {{$message}}
             @enderror
             <br>
             وضعیت خدمت:
-            <select name="military">
-                <option disabled selected>
-                    انتخاب
-                </option>
-                <option value="0">yes</option>
-                <option value="1">no</option>
-            </select>
+            <div id="parent">
+                <select id="military" class="js-example-basic-single" name="military">
+                    <option value="-1"></option>
+                    <option value="0">انجام داده</option>
+                    <option value="1">معاف</option>
+                </select>
+            </div>
             @error('military')
             {{$message}}
             @enderror
@@ -110,4 +129,40 @@
             <a class="btn btn-success" href="{{ route('export') }}">Export data</a>
         </form>
     </div>
+
+    <x-slot name="js">
+        <script>
+            $(document).ready(function () {
+                $('#military').select2({
+                        width: '100%',
+                        dir: "rtl",
+                        dropdownAutoWidth: true,
+                        dropdownParent: $('#parent'),
+                        placeholder: {
+                            id: '-1', // the value of the option
+                            text: 'وضعیت نظام وظیفه'
+                        },
+                        allowClear: true,
+
+                    }
+                );
+                $('#gender').select2({
+                        width: '100%',
+                        // language: 'fa',
+                        dir: "rtl",
+                        dropdownAutoWidth: true,
+                        dropdownParent: $('#parent2'),
+                        placeholder: {
+                            id: '-1', // the value of the option
+                            text: 'جنسیت'
+                        },
+                        allowClear: true,
+                        minimumInputLength: 2
+                        // tags: true,
+
+                    }
+                );
+            });
+        </script>
+    </x-slot>
 </x-test-component>
