@@ -24,8 +24,8 @@ class RequestTest extends FormRequest
     public function rules()
     {
         return [
-            'l_name' => ['bail', 'required', 'string', 'max:20'],
-            'f_name' => ['required', 'string', 'max:20'],
+            'l_name' => ['bail', 'required', 'string', 'max:20', 'unique:my_users'],
+            'f_name' => ['required', 'string', 'max:20', 'unique:my_users'],
             'age' => ['required', 'numeric', 'max:99'],
             'gender' => ['required', 'in:female,male'],
             'military' => ['required_if:gender,male']

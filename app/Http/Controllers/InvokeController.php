@@ -15,6 +15,8 @@ class InvokeController extends Controller
     public function __invoke(Request $request)
     {
 
+        return response('slam','201',['SHOEIB'=>'1371']);
+
         $names = ['ali', 'taghi', '5ali', 'arasto', 'homa'];
 
 

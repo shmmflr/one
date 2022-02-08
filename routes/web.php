@@ -22,7 +22,8 @@ Route::get('/login', function () {
     return view('test');
 })->name('login');
 
-
+Route::get('/logActivity', [UserController::class, 'log'])->name('log');
+Route::get('/add-to-log', [UserController::class, 'showLog'])->name('show.log');
 Route::
 prefix('admin/test/profile')->
 //middleware('auth.basic')->

@@ -7,6 +7,7 @@ use App\Http\Requests\RequestTest;
 use App\Imports\UsersImport;
 use App\Models\MyUser;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Maatwebsite\Excel\Facades\Excel;
 
 class UserController extends Controller
@@ -37,8 +38,10 @@ class UserController extends Controller
     public function store(RequestTest $request)
     {
 //       dd($request->except(['l_name','f_name']));
+        \LogActivity::addToLog('کاربر ساخته شد.');
+        $user = MyUser::create($request->validated());
+//        dd($user);
 
-        MyUser::create($request->validated());
         return back();
     }
 
@@ -51,6 +54,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
+        \LogActivity::addToLog('به صفحه ویرایش آمد');
         $user = MyUser::find($id);
         return view('user_edit', compact('user'));
     }
@@ -60,7 +64,7 @@ class UserController extends Controller
         $rules = [
             'l_name' => 'required',
             'f_name' => 'required',
-            'age' => 'required|min:5',
+            'age' => 'required',
         ];
 //مثال کلی
 //        $customMessages = [
@@ -74,7 +78,7 @@ class UserController extends Controller
             'age.required' => 'سنت چنده دادو',
             'age.min' => 'سنت نباید کمتر از 5 باشه دادو',
         ];
-
+        \LogActivity::addToLog('کاربر را ویرایش کرد');
         $this->validate($request, $rules, $customMessages);
         $user = MyUser::find($id)->update($request->all());
 //        dd($user);
@@ -89,6 +93,7 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
+        \LogActivity::addToLog('کاربر را حذف کرد.');
         $user = MyUser::find($id);
         $user->delete();
         return back();
@@ -106,6 +111,22 @@ class UserController extends Controller
     public function export()
     {
         return Excel::download(new UsersExport, 'madi.xlsx');
+    }
+
+
+    public function log()
+    {
+        \LogActivity::addToLog('My Testing Add To Log.');
+    }
+
+    public function showLog()
+
+    {
+
+        $logs = \LogActivity::logActivityLists();
+
+        return view('logActivity', compact('logs'));
+
     }
 }
 
