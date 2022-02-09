@@ -24,6 +24,11 @@ Route::get('/login', function () {
 
 Route::get('/logActivity', [UserController::class, 'log'])->name('log');
 Route::get('/add-to-log', [UserController::class, 'showLog'])->name('show.log');
+
+Route::get('/product-price-xep', [\App\Http\Controllers\SubscriptionController::class, 'index'])->name('pro.price.exp');
+Route::post('/product-price-xep-insert', [\App\Http\Controllers\SubscriptionController::class, 'store'])->name('pro.price.exp.insert');
+Route::any('/product-price-xep-edit/{subscription}', [\App\Http\Controllers\SubscriptionController::class, 'edit'])->name('pro.price.exp.edit');
+Route::put('/product-price-xep-update/{subscription}', [\App\Http\Controllers\SubscriptionController::class, 'update'])->name('pro.price.exp.update');
 Route::
 prefix('admin/test/profile')->
 //middleware('auth.basic')->

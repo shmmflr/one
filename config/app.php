@@ -161,6 +161,7 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+        Hekmatinasser\Verta\Laravel\VertaServiceProvider::class,
         'Maatwebsite\Excel\ExcelServiceProvider',
 
         /*
@@ -231,6 +232,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'LogActivity' => App\Helpers\LogActivity::class,
+        'Verta' => Hekmatinasser\Verta\Verta::class,
 
     ],
 
