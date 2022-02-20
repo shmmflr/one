@@ -40,6 +40,7 @@
 
 <a class="btn btn-danger" href="{{route('user.index')}}">users</a>
 <a class="btn btn-danger" href="{{route('pro.price.exp')}}">product</a>
+<a class="btn btn-danger" href="{{route('posts')}}">posts</a>
 <ul>
     @guest()
         @isset($number)

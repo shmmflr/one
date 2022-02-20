@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\MyUser;
+use App\Models\rate;
 use Illuminate\Database\Seeder;
 
-class MyUserseeder extends Seeder
+class RateSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,7 +14,7 @@ class MyUserseeder extends Seeder
      */
     public function run()
     {
-        MyUser::truncate();
-        MyUser::factory()->count(20)->create();
+        // rate::truncate();
+        rate::factory()->count(30)->create();
     }
 }
