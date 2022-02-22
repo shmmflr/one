@@ -39,8 +39,9 @@
 </div>
 
 <a class="btn btn-danger" href="{{route('user.index')}}">users</a>
-<a class="btn btn-danger" href="{{route('pro.price.exp')}}">product</a>
-<a class="btn btn-danger" href="{{route('posts')}}">posts</a>
+<a class="btn btn-info" href="{{route('pro.price.exp')}}">product</a>
+<a class="btn btn-primary" href="{{route('posts')}}">posts</a>
+<a class="btn btn-secondary" href="{{route('ioc')}}">ioc</a>
 <ul>
     @guest()
         @isset($number)

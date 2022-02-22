@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\IocServiceController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\RateController;
 use App\Http\Controllers\UserController;
@@ -34,6 +35,10 @@ Route::get('/posts', [PostController::class, 'index'])->name('posts');
 Route::post('/post-rating/{post}', [PostController::class, 'rateing'])->name('rateing.post');
 
 // End Rate
+
+// IOC Service Container
+Route::get('/ioc', [IocServiceController::class, 'index'])->name('ioc');
+// End IOC
 
 Route::get('/product-price-xep', [\App\Http\Controllers\SubscriptionController::class, 'index'])->name('pro.price.exp');
 Route::post('/product-price-xep-insert', [\App\Http\Controllers\SubscriptionController::class, 'store'])->name('pro.price.exp.insert');
