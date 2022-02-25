@@ -2,15 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Ioc\DbConnection as IocDbConnection;
 use App\Models\post;
 use App\Models\rate;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
-
+    public function __construct(IocDbConnection $connection)
+    {
+        var_dump($connection);
+    }
     public function index()
     {
+
         // $post = post::find(13);
         // dd($post->rates->toArray());
         $posts = Post::with(['user', 'rates'])->get();
