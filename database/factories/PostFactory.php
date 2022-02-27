@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Ybazli\Faker\Facades\Faker;
 
 class PostFactory extends Factory
 {
@@ -14,8 +15,8 @@ class PostFactory extends Factory
     public function definition()
     {
         return [
-            'title' => $this->faker->title(),
-            'content' => $this->faker->text(),
+            'title' => Faker::word(),
+            'content' => Faker::paragraph(),
             'created_by' => $this->faker->numberBetween(1, 20),
         ];
     }

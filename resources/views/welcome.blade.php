@@ -42,6 +42,8 @@
 <a class="btn btn-info" href="{{route('pro.price.exp')}}">product</a>
 <a class="btn btn-primary" href="{{route('posts')}}">posts</a>
 <a class="btn btn-secondary" href="{{route('ioc')}}">ioc</a>
+<a class="btn btn-warning" href="{{route('show.log')}}">show logs</a>
+<a class="btn btn-warning" href="{{route('collection')}}">collection</a>
 <ul>
     @guest()
         @isset($number)

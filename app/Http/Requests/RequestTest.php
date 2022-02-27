@@ -26,9 +26,10 @@ class RequestTest extends FormRequest
         return [
             'l_name' => ['bail', 'required', 'string', 'max:20', 'unique:my_users'],
             'f_name' => ['required', 'string', 'max:20', 'unique:my_users'],
+            'eamil' => ['email'],
             'age' => ['required', 'numeric', 'max:99'],
             'gender' => ['required', 'in:female,male'],
-            'military' => ['required_if:gender,male']
+            'military' => ['required_if:gender,male'],
         ];
     }
 
@@ -37,7 +38,7 @@ class RequestTest extends FormRequest
         return [
 
             'gender.required' => 'لطفا جنسیت را تعیین کنید',
-            'military.required_if' => 'وقتی جنسیت مذکر را انتخاب می کنید انتخاب حالت نظام وظیفه الزامی است'
+            'military.required_if' => 'وقتی جنسیت مذکر را انتخاب می کنید انتخاب حالت نظام وظیفه الزامی است',
         ];
     }
 }

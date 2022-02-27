@@ -24,10 +24,10 @@ class UserController extends Controller
      */
     public function index()
     {
+
         $users = MyUser::paginate();
         return view('user', compact('users'));
     }
-
 
     /**
      * Store a newly created resource in storage.
@@ -37,14 +37,32 @@ class UserController extends Controller
      */
     public function store(RequestTest $request)
     {
-//       dd($request->except(['l_name','f_name']));
-        \LogActivity::addToLog('کاربر ساخته شد.');
-        $user = MyUser::create($request->validated());
-//        dd($user);
+        try {
+            //       dd($request->except(['l_name','f_name']));
+            \LogActivity::addToLog('کاربر ساخته شد.');
 
-        return back();
+            $dataArray = [
+                'l_name' => $request->get('l_name'),
+                'f_name' => $request->get('f_name'),
+                'email' => $request->get('email'),
+                'age' => $request->get('age'),
+                'gender' => $request->get('gender'),
+                'military' => $request->get('military'),
+
+            ];
+            $userId = MyUser::insertGetId($dataArray);
+            // $user = MyUser::insertGetId($request->validated());
+
+            $user = MyUser::find($userId);
+            $user->emailAddress = $request->get('email');
+
+            // dd($user->getAttributes());
+
+            return back();
+        } catch (\Exeption$exption) {
+            dd($exption->getMessage());
+        }
     }
-
 
     /**
      * Show the form for editing the specified resource.
@@ -65,6 +83,7 @@ class UserController extends Controller
             'l_name' => 'required',
             'f_name' => 'required',
             'age' => 'required',
+            'eamil' => 'required | email',
         ];
 //مثال کلی
 //        $customMessages = [
@@ -99,7 +118,6 @@ class UserController extends Controller
         return back();
     }
 
-
     public function import(Request $request)
     {
         Excel::import(new UsersImport, $request->file('file')->store('temp'));
@@ -113,14 +131,12 @@ class UserController extends Controller
         return Excel::download(new UsersExport, 'madi.xlsx');
     }
 
-
     public function log()
     {
         \LogActivity::addToLog('My Testing Add To Log.');
     }
 
     public function showLog()
-
     {
 
         $logs = \LogActivity::logActivityLists();
@@ -129,4 +145,3 @@ class UserController extends Controller
 
     }
 }
-

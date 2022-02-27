@@ -3,7 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
+use Ybazli\Faker\Facades\Faker;
 
 class MyUserFactory extends Factory
 {
@@ -14,10 +14,12 @@ class MyUserFactory extends Factory
      */
     public function definition()
     {
+
         return [
-            'l_name' => $this->faker->name(),
-            'f_name' => $this->faker->unique()->safeEmail(),
+            'l_name' => Faker::firstName(),
+            'f_name' => Faker::lastName(),
             'age' => $this->faker->numberBetween(12, 40),
+            'email' => $this->faker->email(),
         ];
     }
 }

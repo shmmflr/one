@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CollectionController;
 use App\Http\Controllers\IocServiceController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\RateController;
@@ -27,6 +28,8 @@ Route::get('/login', function () {
 
 Route::get('/logActivity', [UserController::class, 'log'])->name('log');
 Route::get('/add-to-log', [UserController::class, 'showLog'])->name('show.log');
+
+Route::get('/collection', [CollectionController::class, 'index'])->name('collection');
 
 // Rate
 

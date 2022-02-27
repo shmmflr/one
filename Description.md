@@ -55,4 +55,24 @@ custom Request و اعتبار سنجی فرم ها
 <li>
 ساخت سیستم log به همراه جدول گزارش گیری
 </li>
+<li>
+کار با ioc service container
+bind 
+singlrton
+instance 
+abstarac class
+interface
+oop
+</li>
+<li>
+کار با service provider
+create & config
+method : register & boot
+</li>
+<li>
+ساخت سیستم log به همراه جدول گزارش گیری
+</li>
+<li>
+روابط morphMany
+</li>
 </ul>

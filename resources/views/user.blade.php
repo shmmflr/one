@@ -33,7 +33,9 @@
             {{$message}}
             @enderror
             <br>
-
+            <br>
+            email : <input type="email" name='email' value="{{old('email')}}">
+            <br>
             <br>
             سن :<input type="number" name="age" value="{{old('age')}}">
             @error('age')
@@ -78,8 +80,8 @@
             <thead>
             <tr>
                 <th>ردیف</th>
-                <th>نام</th>
-                <th> خ نام</th>
+                <th>نام کامل</th>
+                <th>email</th>
                 <th>سن</th>
                 <th>حذف</th>
                 <th>ویرایش</th>
@@ -89,8 +91,8 @@
             @forelse($users as $key=>$user)
                 <tr>
                     <td>{{$key=$key+1}}</td>
-                    <td>{{$user->l_name}}</td>
-                    <td>{{$user->f_name}}</td>
+                    <td>{{$user->fullname}}</td>
+                    <td>{{$user->email}}</td>
                     <td>{{$user->age}}</td>
                     <td>
                         <form method="post" action="{{route('user.destroy',$user->id)}}">

@@ -163,6 +163,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Hekmatinasser\Verta\Laravel\VertaServiceProvider::class,
         'Maatwebsite\Excel\ExcelServiceProvider',
+        Ybazli\Faker\FakerServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -240,6 +241,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'LogActivity' => App\Helpers\LogActivity::class,
         'Verta' => Hekmatinasser\Verta\Verta::class,
+        'Faker' => Ybazli\Faker\Facades\Faker::class,
 
     ],
 
