@@ -75,4 +75,10 @@ method : register & boot
 <li>
 روابط morphMany
 </li>
+<li>
+Mutator
+</li>
+<li>
+Collections
+</li>
 </ul>

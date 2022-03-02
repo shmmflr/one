@@ -1,7 +1,10 @@
 <?php
 
+use App\Http\Controllers\CacheController;
 use App\Http\Controllers\CollectionController;
+use App\Http\Controllers\HelperControoler;
 use App\Http\Controllers\IocServiceController;
+use App\Http\Controllers\LangController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\RateController;
 use App\Http\Controllers\UserController;
@@ -30,6 +33,20 @@ Route::get('/logActivity', [UserController::class, 'log'])->name('log');
 Route::get('/add-to-log', [UserController::class, 'showLog'])->name('show.log');
 
 Route::get('/collection', [CollectionController::class, 'index'])->name('collection');
+Route::get('/cache', [CacheController::class, 'index'])->name('cache');
+Route::get('/helper', [HelperControoler::class, 'index'])->name('helper');
+
+// lang
+// en
+Route::prefix('en')->group(function () {
+    Route::get('/lang', [LangController::class, 'indexEn'])->name('lang');
+});
+
+// fa
+Route::prefix('fa')->group(function () {
+    Route::get('/lang', [LangController::class, 'indexFa'])->name('lang');
+});
+// lang
 
 // Rate
 
