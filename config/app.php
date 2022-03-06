@@ -184,6 +184,7 @@ return [
 
         App\Providers\ConnectionServiceProvider::class,
         App\Providers\DbServiceProvider::class,
+        App\Providers\PaymentServiceProvider::class,
 
     ],
 
@@ -242,6 +243,10 @@ return [
         'LogActivity' => App\Helpers\LogActivity::class,
         'Verta' => Hekmatinasser\Verta\Verta::class,
         'Faker' => Ybazli\Faker\Facades\Faker::class,
+        // اینجا ادرس خود فساده
+        "Payment" => App\Facades\Payment\PaymentFacade::class,
+        // از این به بعد با دستور فوق تمامی متدهای کلاس قابل دسترسی هستند
+        // Payment::method name
 
     ],
 

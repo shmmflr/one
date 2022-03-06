@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CacheController;
 use App\Http\Controllers\CollectionController;
+use App\Http\Controllers\FacadeController;
 use App\Http\Controllers\HelperControoler;
 use App\Http\Controllers\IocServiceController;
 use App\Http\Controllers\LangController;
@@ -47,6 +48,10 @@ Route::prefix('fa')->group(function () {
     Route::get('/lang', [LangController::class, 'indexFa'])->name('lang');
 });
 // lang
+
+// Facade
+Route::get('/facade', [FacadeController::class, 'index'])->name('facade');
+// Facade
 
 // Rate
 

@@ -48,6 +48,7 @@
     <a class="btn btn-danger" href="{{route('cache')}}">cache</a>
     <a class="btn btn-info" href="{{route('helper')}}">hepler</a>
     <a class="btn btn-primary" href="{{route('lang')}}">lang</a>
+    <a class="btn btn-secondary" href="{{route('facade')}}">facade</a>
     {{-- my helper is test --}}
     <span class="badge badge-danger badge-pill"> {{test('shoeib')}}</span>
     {{-- my helper is test --}}
